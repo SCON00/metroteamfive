@@ -1,0 +1,15 @@
+.circle {
+	width: 22px;
+  	height: 22px;
+	border-radius: 15px;
+	background-color: white;
+	border: 4px solid #f51361;
+	z-index: 2;
+}
+.rule {
+	width: 29px;
+  	height: 1px;
+	padding: 11px;
+	background-color: #f51361;
+	z-index: 1;
+}
