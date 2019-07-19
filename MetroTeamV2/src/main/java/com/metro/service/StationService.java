@@ -11,6 +11,6 @@ public interface StationService {
 	 */
 	String stationInfo(String stationName);
 	
-	List<StationVO> getLineInfo(String lineNumber);
+	List<StationVO> lineInfo(String lineNumber);
 	
 }

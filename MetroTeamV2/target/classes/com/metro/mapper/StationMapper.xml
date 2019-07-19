@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE station_name = #{stationName}
 	</select>
 	
-	<select id="showLine" parameterType="String" resultType="station">
+	<select id="getLine" parameterType="String" resultType="station">
 		SELECT STATION_CODE, STATION_NAME, STATION_NAME_ENG, LINE, F_CODE
 		FROM stations 
 		WHERE line = #{lineNumber} 

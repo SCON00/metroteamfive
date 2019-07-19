@@ -12,5 +12,5 @@ public interface StationDAO {
 	 */
 	String selectStationByName(String stationName);
 	
-	List<StationVO> showStationByLine(String lineNumber);
+	List<StationVO> getLineInfo(String lineNumber);
 }

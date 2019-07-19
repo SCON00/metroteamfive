@@ -31,11 +31,11 @@ public class StationDAOImpl implements StationDAO {
 	}
 	
 	@Override
-	public List<StationVO> showStationByLine(String lineNumber) {
+	public List<StationVO> getLineInfo(String lineNumber) {
 		
 		System.out.println(lineNumber + ": DAO");
 		
-		List<StationVO> list = mybatis.selectList("station.showLine", lineNumber);
+		List<StationVO> list = mybatis.selectList("station.getLine", lineNumber);
 		
 		System.out.println(list);
 		

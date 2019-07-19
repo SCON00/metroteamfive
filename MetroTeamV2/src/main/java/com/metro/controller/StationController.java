@@ -41,7 +41,7 @@ public class StationController {
 		
 		System.out.println(lineNumber + ": Controller");
 		
-		List<StationVO> list = stationService.getLineInfo(lineNumber);
+		List<StationVO> list = stationService.lineInfo(lineNumber);
 		
 		System.out.println(list);
 		

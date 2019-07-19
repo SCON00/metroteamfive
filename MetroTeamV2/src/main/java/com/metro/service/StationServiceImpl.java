@@ -24,11 +24,11 @@ public class StationServiceImpl implements StationService {
 	}
 	
 	@Override
-	public List<StationVO> getLineInfo(String lineNumber) {
+	public List<StationVO> lineInfo(String lineNumber) {
 		
 		System.out.println(lineNumber + ": Service");
 		
-		List<StationVO> list = stationDAO.showStationByLine(lineNumber);
+		List<StationVO> list = stationDAO.getLineInfo(lineNumber);
 		
 		System.out.println(list);
 		
