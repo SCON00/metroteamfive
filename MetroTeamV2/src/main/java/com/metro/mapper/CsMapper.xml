@@ -4,5 +4,97 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cs">
+
+	<!-- ##### notice_start ##### -->
+	<!-- noticeAllList -->
+	<select id="noticeAllList" parameterType="cs" resultType="cs">
+		<![CDATA[
+			SELECT * FROM notice ORDER BY ndate DESC
+		]]>
+	</select>
+	
+	<!-- noticeList -->
+	<select id="noticeList" parameterType="cs" resultType="cs">
+		<![CDATA[
+			SELECT * FROM notice
+		]]>
+		<if test="lno != 0">
+			<if test="lno != null">
+				WHERE lno = #{lno}
+			</if>
+		</if>
+		<if test="ntitle != null">
+			WHERE ntitle LIKE '%'||#{ntitle}||'%'
+				OR ncontent LIKE  '%'||#{ntitle}||'%'
+		</if>
+		<![CDATA[
+			 ORDER BY ndate DESC
+		]]>
+	</select>
+	
+	<!-- noticeView -->
+	<select id="noticeView" parameterType="cs" resultType="cs">
+		<![CDATA[
+			SELECT * FROM notice WHERE nid=#{nid}
+		]]>
+	</select>
+	
+	<!-- noticeCnt -->
+	<update id="noticeCnt" parameterType="cs">
+		<![CDATA[
+			UPDATE notice SET
+			cnt = cnt+1
+			WHERE nid = #{nid}
+		]]>
+	</update>
+	<!-- ##### notice_end ##### -->
+	
+	
+	<!-- ##### QA_start ##### -->
+	<!-- sendQA -->
+	<insert id="sendQA" parameterType="cs">
+		INSERT INTO qna(qid, qcontent, qemail, category, state, mid, qdate 
+		<if test="file != null">
+			 ,qfile, qsize
+		</if>) 
+		VALUES (qna_qid_seq.nextval, #{qcontent}, #{qemail}, #{category}, '미완료', #{mid}, sysdate
+		<if test="file != null">
+			 ,#{qfile}, #{qsize}
+		</if>)
+	</insert>
+	
+	<!-- qAList -->
+	<select id="qAList" resultType="cs">
+	<![CDATA[
+		SELECT * FROM qna ORDER BY qdate DESC
+	]]>
+	</select>
+	
+	<!-- qAView -->
+	<select id="qAView" parameterType="cs" resultType="cs">
+	<![CDATA[
+		SELECT * FROM qna WHERE qid = #{qid}
+	]]>
+	</select>
+	
+	<!-- updateQA -->
+	<update id="updateQA" parameterType="cs">
+		UPDATE qna SET 
+		qcontent = #{qcontent}, 
+		qemail = #{qemail} 
+		<if test="file != null">
+			 , qfile = #{qfile}
+			 , qsize = #{qsize}
+		</if>
+		WHERE qid = #{qid}
+	</update>
+	
+	<!-- deleteQA -->
+	<delete id="deleteQA" parameterType="cs">
+		<![CDATA[
+			DELETE qna WHERE qid = #{qid}
+		]]>
+	</delete>
+	<!-- ##### QA_end ##### -->
 	
 </mapper>
