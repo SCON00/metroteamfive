@@ -1,5 +1,9 @@
 package com.metro.dao;
 
+import java.util.List;
+
+import com.metro.domain.StationVO;
+
 public interface StationDAO {
 
 	/*
@@ -8,4 +12,5 @@ public interface StationDAO {
 	 */
 	String selectStationByName(String stationName);
 	
+	List<StationVO> showStationByLine(String lineNumber);
 }

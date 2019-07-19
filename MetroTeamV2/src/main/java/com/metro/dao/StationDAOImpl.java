@@ -8,12 +8,14 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.metro.domain.StationVO;
+
 @Repository("stationDAO")
 public class StationDAOImpl implements StationDAO {
 
 	@Autowired
 	private SqlSessionTemplate mybatis;
-	
+
 	@Override
 	public String selectStationByName(String stationName) {
 		System.out.println(stationName + ": DAO");
@@ -21,11 +23,22 @@ public class StationDAOImpl implements StationDAO {
 		map.put("stationName", stationName);
 		List<String> list = mybatis.selectList("station.selectByName", map);
 		String result = "";
-		for(String s : list) {
-			result += "<" + s + ">";			
+		for (String s : list) {
+			result += "<" + s + ">";
 		}
 		System.out.println(result);
 		return result;
 	}
-
+	
+	@Override
+	public List<StationVO> showStationByLine(String lineNumber) {
+		
+		System.out.println(lineNumber + ": DAO");
+		
+		List<StationVO> list = mybatis.selectList("station.showLine", lineNumber);
+		
+		System.out.println(list);
+		
+		return list;
+	}
 }
