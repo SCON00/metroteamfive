@@ -42,10 +42,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		member
 	</select>
 	
-	<select id="selectStation" resultMap="stationResult">
-		SELECT * FROM stations 
-		WHERE ROWNUM <![CDATA[<]]> 11 
-		ORDER BY station_code
+	<select id="selectStation" parameterType="map" resultMap="stationResult">
+		SELECT * 
+		FROM (
+			SELECT ROWNUM rnum, a.* 
+			FROM stations a 
+			<if test="searchWord != null">
+			WHERE station_code LIKE '%'||#{searchWord}||'%' 
+				OR station_name LIKE '%'||#{searchWord}||'%'
+			</if>
+			<if test="line != null">
+		 	WHERE a.line = #{line}
+		 	</if>
+			ORDER BY a.station_code) s 
+		 WHERE (s.rnum BETWEEN ${startIndex} AND ${endIndex}) 
+		 
 	</select>
 	
 	<select id="selectNotice" resultMap="noticeResult">
@@ -56,13 +67,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="selectExitNumber" parameterType="String" resultType="String">
 		SELECT exit_number FROM station_exits 
-		WHERE station_code = #{stationCode} 
+		WHERE station_name = #{stationName} 
 		GROUP BY exit_number
 	</select>
 	
 	<select id="selectExitInfo" parameterType="map" resultType="String">
 		SELECT spot FROM station_exits 
-		WHERE station_code = #{stationCode} 
+		WHERE station_name = #{stationName} 
 		AND exit_number = #{exitNumber} 	
+	</select>
+	
+	<select id="selectByStationCode" parameterType="String" resultType="String">
+		SELECT station_name 
+		FROM stations 
+		WHERE station_code = #{stationCode}
+	</select>
+	
+	<select id="selectStationCode" parameterType="String" resultType="String">
+		SELECT MIN(station_code) FROM stations 
+		WHERE station_name = (SELECT station_name FROM stations WHERE station_code = #{stationCode})
 	</select>
 </mapper>
