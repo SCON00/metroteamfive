@@ -54,11 +54,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- sendQA -->
 	<insert id="sendQA" parameterType="cs">
 		INSERT INTO qna(qid, qcontent, qemail, category, state, mid, qdate 
-		<if test="file != null">
+		<if test="qfile != null">
 			 ,qfile, qsize
 		</if>) 
 		VALUES (qna_qid_seq.nextval, #{qcontent}, #{qemail}, #{category}, '미완료', #{mid}, sysdate
-		<if test="file != null">
+		<if test="qfile != null">
 			 ,#{qfile}, #{qsize}
 		</if>)
 	</insert>
@@ -82,7 +82,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		UPDATE qna SET 
 		qcontent = #{qcontent}, 
 		qemail = #{qemail} 
-		<if test="file != null">
+		<if test="qfile != null">
 			 , qfile = #{qfile}
 			 , qsize = #{qsize}
 		</if>
