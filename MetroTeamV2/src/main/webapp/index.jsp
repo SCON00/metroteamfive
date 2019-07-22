@@ -14,6 +14,7 @@
 <link href="resources/css/quickmenu.css" rel="stylesheet" />
 <script type="text/javascript" src='resources/js/jquery-3.4.1.js'></script>
 <script type="text/javascript" src='resources/js/bootstrap.js'></script>
+
 <script type="text/javascript" src="resources/js/cs.js"></script>
 </head>
 <body>
