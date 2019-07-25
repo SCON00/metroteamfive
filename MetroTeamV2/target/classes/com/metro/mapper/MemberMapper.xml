@@ -5,4 +5,113 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="member">
 	
+	<select id="midCheck" parameterType="member" resultType="member">
+		SELECT mid, email, mtel, pass, username, intro, mdate 
+		FROM member
+		WHERE
+		<if test="email != null">
+			email=#{email}
+		</if>
+		<if test="mtel != null">
+			mtel=#{mtel}
+		</if> 
+		<if test="username != null">
+			username=#{username}
+		</if>
+	</select>
+		
+	<select id="login" parameterType="member" resultType="member">
+		SELECT mid, email, mtel, pass, username, intro, mdate
+		FROM member
+		WHERE pass=#{pass} 
+		<if test="email != null">
+			and email=#{email}
+		</if>
+		<if test="mtel != null">
+			and mtel=#{mtel}
+		</if> 
+		<if test="username != null">
+			and username=#{username}
+		</if>
+	</select>
+	
+	<insert id="signup" parameterType="member">
+		INSERT INTO member
+		( mid, pass, username, mdate 
+		<if test="email != null">
+			,email
+		</if>
+		<if test="mtel != null">
+			,mtel
+		</if>
+		<if test="intro != null">
+			,intro
+		</if>
+		) VALUES 
+		(member_mid_seq.nextval, #{pass}, #{username}, SYSDATE
+		<if test="email != null">
+			,#{email}
+		</if> 
+		<if test="mtel != null">
+			,#{mtel}
+		</if>
+		<if test="intro != null">
+			,#{intro}
+		</if>
+		)	
+	</insert>
+	
+	<update id="updateProfile" parameterType="member">
+		UPDATE member 
+		SET username=#{username}
+		<if test="pass != null">
+			, pass=#{pass}
+		</if> 
+		<if test="intro != null">
+			,intro=#{intro}
+		</if>
+		WHERE 
+		<if test="email != null">
+			email=#{email}
+		</if>
+		<if test="mtel != null">
+			mtel=#{mtel}
+		</if> 
+	</update>
+	
+	<select id="formCheck" parameterType="member"  resultType="member">
+		SELECT mid, email, mtel, pass, username, intro, mdate
+		FROM member
+		WHERE username=#{username} 
+		<if test="email != null">
+			and email=#{email}
+		</if>
+		<if test="mtel != null">
+			and mtel=#{mtel}
+		</if>
+	</select>
+	
+	<select id="getFavoriteList" parameterType="String" resultType="favoritestation">
+		SELECT station.sid, station.sname, station.direction, station.lno, station.info, station.addr, station.stel
+		FROM station, bookmark
+		WHERE mid=#{mid} AND station.sid = bookmark.sid
+	</select>
+	
+	<delete id="editFavorite" parameterType="hashMap">
+		DELETE FROM bookmark 
+		WHERE mid=#{mid} AND sid=#{sid}
+	</delete>
+	
+	<select id="getHistoryList" parameterType="String" resultType="hashMap">
+		SELECT history.sid AS sid, station.sname AS sname
+		FROM history, station
+		WHERE history.sid=station.sid AND history.mid=#{mid}
+		ORDER BY history.hdate
+	</select>
+	
+	<delete id="editHistory" parameterType="hashMap">
+		DELETE FROM history
+		WHERE mid=#{mid} AND sid=#{sid}
+	</delete>
+
 </mapper>
