@@ -19,20 +19,12 @@
 <body>
 	<div class="form-group" style="display: table; margin-left: auto; margin-right: auto;">
 		<div class="header">
-		<div>역/노선을 검색하는 팝업입니다~</div>
+			<div class="header-text">
+				<span>빠른 역 찾기</span>
+			</div>
 		</div>
+		<br/>
 		<div>
-        	<table class="table table-responsive">
-        	<%for(int i=1; i<=9; i++){ %>
-        		<%if(i%3 == 1 && i != 1) {%>
-        			<tr>
-        		<%}%>
-        			<td><input type="button" class="btn btn-default" value="<%=i%>호선"></td>
-        		<%if(i%3 == 0) {%>
-        			</tr>
-        		<%} %>
-        	<%} %>
-        	</table>
         	<div class="input-group">
         		<input type="text" class="form-control" id="searchStation" size="30" placeholder="Search for Station...">
         		<span class="input-group-btn">
@@ -41,11 +33,12 @@
         			</button>
         		</span>
 			</div><!-- /input-group -->
+			<!-- 주석풀고 이름 바꿔서 사용해야 됨 -->
 <%--         
 			<table class="table table-striped">
         	<c:forEach items="${stationList }" var="st">
         		<tr>
-        			<td align="left"><a href="noticeView.do?sid=${st.sid }">${st.sname }</a></td>
+        			<td align="left"><a href="station~~.do?sid=${st.sid }">${st.sname }</a></td>
         			<td>${st.lno }</td>
         			<td>${st.direction }</td>
 				</tr>
