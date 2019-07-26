@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title> QnA 상세 보기 </title>
 <link href="./../resources/css/bootstrap.css" rel="stylesheet" />
+<link href="./../resources/css/cs.css" rel="stylesheet" />
 <script type="text/javascript" src='./../resources/js/jquery-3.4.1.js'></script>
 <script type="text/javascript" src='./../resources/js/bootstrap.js'></script>
 </head>
@@ -58,8 +59,8 @@
 								<td align="left">첨부파일</td>
 								<td><img src="./../resources/upload/${qA.qfile }" class="img-responsive"><br/>
 									<input type="file" class="form-control" name="file" 
-										maxlength="60" size="40" accept=".jpg, .jpeg, .png, .bmp" 
-										placeholder="+ 첨부파일 수정"></td>
+										maxlength="60" size="40" placeholder="+ 첨부파일 수정" 
+										accept=".jpg, .jpeg, .png, .bmp, .gif, .svg, .tiff, .heif, .raw"></td>
 							</tr>
 							<tr>
 								<td colspan="2">&nbsp 파일 형식은 jpg, gif 등 이미지 파일만 가능하며 1개의 파일만 첨부할 수 있습니다.</td>

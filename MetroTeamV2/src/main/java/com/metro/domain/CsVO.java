@@ -10,12 +10,12 @@ public class CsVO {
 	/****************************/
 	/******* notice_start ******/
 	/****************************/
-	private String nid;
-	private String ntitle;
-	private String ncontent;
-	private String ndate;
-	private String lno;
-	private int cnt;
+	private String nid;			// 공지사항ID
+	private String ntitle;		// 제목
+	private String ncontent;	// 내용
+	private String ndate;		// 날짜
+	private String lno;			// 호선번호
+	private int cnt;			// 조회수
 	
 	// ===== setter =====
 	public void setNid(String nid) {
@@ -67,15 +67,15 @@ public class CsVO {
 	/***********************/
 	/******* QA_start ******/
 	/***********************/
-	private String qid;
-	private String qcontent;
-	private String qfile;
-	private String qemail;
-	private String category;
-	private String state;
-	private String mid;
-	private String qdate;
-	private long qsize;
+	private String qid;			// 문의글ID
+	private String qcontent;	// 내용
+	private String qfile;		// 첨부파일
+	private String qemail;		// 이메일
+	private String category;	//카테고리
+	private String state;		// 처리현황
+	private String mid;			// 회원ID
+	private String qdate;		// 날짜
+	private long qsize;			// 첨부파일사이즈
 
 	//*************************************************
 	MultipartFile file;			// <input type="file">의 name으로 지정한 이름
@@ -166,6 +166,54 @@ public class CsVO {
 	
 	
 	
+
+	/******************************/
+	/******* popupChat_start ******/
+	/******************************/
+	// private String mid;			// 회원ID, QA부분에서 선언함
+	// private String lno;			// 노선번호, notice부분에서 선언함
+	private String sname;			// 역이름
+	private String mdate;		// 시간
+	private String messageid;	// 메세지ID
+	
+	// ----- setter -----
+	public void setSname(String sname) {
+		this.sname = sname;
+	}
+	public void setMdate(String mdate) {
+		this.mdate = mdate;
+	}
+	public void setMessageid(String messageid) {
+		this.messageid = messageid;
+	}
+	
+	// ----- getter -----
+	public String getSname() {
+		return sname;
+	}
+	public String getMdate() {
+		return mdate;
+	}
+	public String getMessageid() {
+		return messageid;
+	}
+	
+	private String content;			// mcontent테이블의 content
+	
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	/****************************/
+	/******* popupChat_end ******/
+	/****************************/
+	
+
+
+
+
 
 	/***************************/
 	/******* paging_start ******/

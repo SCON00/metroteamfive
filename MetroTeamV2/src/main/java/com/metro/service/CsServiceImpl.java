@@ -64,5 +64,28 @@ public class CsServiceImpl implements CsService {
 	}
 	
 	// ##### QA_end #####
+	
+
+	// ##### popupChat_start #####
+	// 채팅의 모든 정보 insert
+	public void insertMessage(CsVO vo) {
+		csDAO.insertMessage(vo);
+	}
+	
+	// insert한 채팅 정보 얻어오기
+	public List<CsVO> selectMessage(CsVO vo){
+		return csDAO.selectMessage(vo);
+	}
+	
+	// 내용 insert
+	public void insertContent(CsVO vo) {
+		csDAO.insertContent(vo);
+	}
+	
+	// insert한 내용 얻어오기
+	public List<CsVO> selectContent(CsVO vo){
+		return csDAO.selectContent(vo);
+	}
+	// ##### popupChat_end #####
 		
 }

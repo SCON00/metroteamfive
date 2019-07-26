@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>공지사항</title>
 <link href="./../resources/css/bootstrap.css" rel="stylesheet" />
+<link href="./../resources/css/cs.css" rel="stylesheet" />
 <script type="text/javascript" src='./../resources/js/jquery-3.4.1.js'></script>
 <script type="text/javascript" src='./../resources/js/bootstrap.js'></script>
 <script type="text/javascript" src="./../resources/js/cs.js"></script>
@@ -29,6 +30,14 @@
   				<%=i %>호선</button>
   					<%}
   				} %>
+  			<button type="button" class="btn btn-default" name="lineNo" value="경의중앙">경의중앙</button>
+  			<button type="button" class="btn btn-default" name="lineNo" value="공항">공항</button>
+  			<button type="button" class="btn btn-default" name="lineNo" value="경춘">경춘</button>
+  			<button type="button" class="btn btn-default" name="lineNo" value="인천">인천</button>
+  			<button type="button" class="btn btn-default" name="lineNo" value="수인">수인</button>
+  			<button type="button" class="btn btn-default" name="lineNo" value="분당">분당</button>
+  			<button type="button" class="btn btn-default" name="lineNo" value="신분당">신분당</button>
+  			<button type="button" class="btn btn-default" name="lineNo" value="우이신설">우이신설</button>
 		</div>
 		
 			<div class="table">

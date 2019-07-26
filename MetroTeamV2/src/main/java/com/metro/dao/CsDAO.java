@@ -42,6 +42,21 @@ public interface CsDAO {
 	public void deleteQA(CsVO vo);
 	// ##### QA_end #####
 	
+
+	// ##### popupChat_start #####
+	// 채팅 모든 정보 insert
+	public void insertMessage(CsVO vo);
+	
+	// insert한 채팅 정보 얻어오기
+	public List<CsVO> selectMessage(CsVO vo);
+	
+	// 내용 insert
+	public void insertContent(CsVO vo);
+	
+	// insert한 내용 얻어오기
+	public List<CsVO> selectContent(CsVO vo);
+	// ##### popupChat_end #####
+	
 	
 	
 }

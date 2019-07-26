@@ -73,6 +73,33 @@ public class CsDAOImpl implements CsDAO {
 	}
 	
 	// ##### QA_end #####
+	
+
+	// ##### popupChat_start #####
+	// 채팅의 모든 정보 insert
+	public void insertMessage(CsVO vo) {
+		System.out.println("===> Mybatis insertMessage() 호출");
+		mybatis.insert("cs.insertMessage", vo);
+	}
+	
+	// insert한 채팅 정보 얻어오기
+	public List<CsVO> selectMessage(CsVO vo){
+		System.out.println("===> Mybatis selectMessage() 호출");
+		return mybatis.selectList("cs.selectMessage", vo);
+	}
+	
+	// 내용 insert
+	public void insertContent(CsVO vo) {
+		System.out.println("===. Mybatis insertContent() 호출");
+		mybatis.insert("cs.insertContent", vo);
+	}
+	
+	// insert한 내용 얻어오기
+	public List<CsVO> selectContent(CsVO vo){
+		System.out.println("===> Mybatis selectContent() 호출");
+		return mybatis.selectList("cs.selectContent", vo);
+	}
+	// ##### popupChat_end #####
 		
 
 }

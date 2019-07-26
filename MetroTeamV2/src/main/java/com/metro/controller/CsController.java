@@ -50,7 +50,7 @@ public class CsController {
 		try {
 			str = mapper.writeValueAsString(list);
 		} catch (Exception e) {
-			System.out.println("error> " + e.getMessage());
+			System.out.println("noticeList_error> " + e.getMessage());
 		}
 		return str;
 	}
@@ -98,4 +98,43 @@ public class CsController {
 		return "redirect:/cs/qAList.do";
 	}
 	// ##### QA_end #####
+	
+	
+	// ##### popupChat_start #####
+	// 채팅의 모든 정보 insert
+	@RequestMapping(value = "insertMessage.do", method = RequestMethod.POST, 
+			produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String insertMessage(CsVO vo, HttpServletResponse response) {
+		csService.insertMessage(vo);
+		List<CsVO> list = csService.selectMessage(vo);
+		
+		String str = "";
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			str = mapper.writeValueAsString(list);
+		} catch (Exception e) {
+			System.out.println("insertMessage_error> " + e.getMessage());
+		}
+		return str;
+	}
+	
+	// 내용 insert
+	@RequestMapping(value = "insertContent.do", method = RequestMethod.POST, 
+			produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String insertContent(CsVO vo, HttpServletResponse response) {
+		csService.insertContent(vo);
+		List<CsVO> list = csService.selectContent(vo);
+		
+		String str = "";
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			str = mapper.writeValueAsString(list);
+		} catch (Exception e) {
+			System.out.println("insertContent_eror>" + e.getMessage());
+		}
+		return str;
+	}
+	// ##### popupChat_end #####
 }

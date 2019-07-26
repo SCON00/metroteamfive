@@ -40,5 +40,20 @@ public interface CsService {
 	// 문의글 삭제
 	void deleteQA(CsVO vo);
 	// ##### QA_end #####
+	
+
+	// ##### popupChat_start #####
+	// 채팅의 모든 정보 insert
+	void insertMessage(CsVO vo);
+	
+	// insert한 채팅 정보 얻어오기
+	List<CsVO> selectMessage(CsVO vo);
+	
+	// 내용 insert
+	void insertContent(CsVO vo);
+	
+	// insert한 내용 얻어오기
+	List<CsVO> selectContent(CsVO vo);
+	// ##### popupChat_end #####
 		
 }

@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width" />
 
 <link href="./../resources/css/bootstrap.css" rel="stylesheet" />
-<link href="./../resources/css/quickmenu.css" rel="stylesheet" />
+<link href="./../resources/css/cs.css" rel="stylesheet" />
 
 <script type="text/javascript" src='./../resources/js/jquery-3.4.1.js'></script>
 <script type="text/javascript" src='./../resources/js/bootstrap.js'></script>
@@ -18,7 +18,9 @@
 </head>
 <body>
 	<div class="form-group" style="display: table; margin-left: auto; margin-right: auto;">
+		<div class="header">
 		<div>역/노선을 검색하는 팝업입니다~</div>
+		</div>
 		<div>
         	<table class="table table-responsive">
         	<%for(int i=1; i<=9; i++){ %>

@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<![CDATA[
 			SELECT * FROM notice
 		]]>
-		<if test="lno != 0">
+		<if test='lno != "0"'>
 			<if test="lno != null">
 				WHERE lno = #{lno}
 			</if>
@@ -96,5 +96,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</delete>
 	<!-- ##### QA_end ##### -->
+	
+	
+	<!-- ##### popupChat_start ##### -->
+	<!-- insertMessage -->
+	<insert id="insertMessage" parameterType="cs">
+		INSERT INTO message (mid, lno, mdate, messageid, sid) 
+		VALUES (#{mid}, #{lno}, #{mdate}, message_messageid_seq.nextval, 
+		(SELECT station_code FROM stations WHERE station_name=#{sname} AND line LIKE '%'||#{lno}||'%'))
+	</insert>
+	
+	<!-- selectMessage -->
+	<select id="selectMessage" parameterType="cs" resultType="cs">
+		<![CDATA[
+			SELECT * FROM message 
+			WHERE lno=#{lno} AND mdate=#{mdate} AND mid=#{mid}
+		]]>
+	</select>
+	
+	<!-- insertContent -->
+	<insert id="insertContent" parameterType="cs">
+	<![CDATA[
+			INSERT INTO mcontent (messageid, content) 
+			VALUES (#{messageid}, #{content})
+		]]>
+	</insert>
+	
+	<!-- selectContent -->
+	<select id="selectContent" parameterType="cs" resultType="cs">
+		<![CDATA[
+			SELECT * FROM mcontent 
+			WHERE messageid = #{messageid}
+		]]>
+	</select>
+	<!-- ##### popupChat_end ##### -->
 	
 </mapper>

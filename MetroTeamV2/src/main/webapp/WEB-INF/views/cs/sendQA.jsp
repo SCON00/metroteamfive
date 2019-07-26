@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title> QnA 작성 </title>
 <link href="./../resources/css/bootstrap.css" rel="stylesheet" />
+<link href="./../resources/css/cs.css" rel="stylesheet" />
 <script type="text/javascript" src='./../resources/js/jquery-3.4.1.js'></script>
 <script type="text/javascript" src='./../resources/js/bootstrap.js'></script>
 <!-- css -->
@@ -45,7 +46,8 @@
 					<input type="email" class="form-control" name="qemail" 
 						required="required" placeholder="답변 받을 이메일 주소"><br /> 
 					<input type="file" class="form-control" name="file" 
-						maxlength="60" size="40" accept=".jpg, .jpeg, .png, .bmp" placeholder="+ 첨부파일 추가">
+						maxlength="60" size="40" placeholder="+ 첨부파일 추가" 
+						accept=".jpg, .jpeg, .png, .bmp, .gif, .svg, .tiff, .heif, .raw">
 					<hr>
 
 					<!-- 첨부파일 안내 메세지  -->
@@ -53,7 +55,7 @@
 					<br />
 					
 					<!-- 추가적으로 보내야 될 정보_회원ID -->
-					<input type="hidden" name="mid" value="1">
+					<input type="hidden" name="mid" value="27">
 
 					<!-- 보내기 버튼 -->
 					<input type="submit" value="보내기" class="btn btn-default btn-lg btn-block" />

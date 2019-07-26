@@ -111,7 +111,7 @@
     bottom: 0;
     width: 100%;
     min-width: 360px;
-    min-height: 200px;
+    min-height: 440px;
 }
 
 .chat-area{
@@ -139,6 +139,21 @@
     color: #000;
 }
 
+.userMessage{
+	border: 3px solid #ffdd00;
+	border-radius: 10px;
+}
+
+.serviseError{
+	border: 3px solid #ffe95c;
+	border-radius: 10px;
+}
+
+.chat-list li {
+	list-style: none;
+	padding-left: 0px;
+}
+
 .footer {
 	position: fixed;
     left: 0;
@@ -146,3 +161,8 @@
     bottom: 0;
     z-index: 10;
 }
+
+
+/*
+*	퀵 메뉴 > 검색창 css
+*/
