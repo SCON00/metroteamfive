@@ -3,16 +3,80 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+
 <mapper namespace="station">
-	<select id="selectByName" parameterType="hashmap" resultType="String">
-		SELECT station_code FROM stations 
-		WHERE station_name = #{stationName}
+
+	<resultMap id="stationResult" type="station">
+		<id property="stationCode" column="STATION_CODE" />
+		<result property="stationName" column="STATION_NAME" />
+		<result property="stationNameEng" column="STATION_NAME_ENG" />
+		<result property="line" column="LINE" />
+		<result property="fCode" column="F_CODE" />
+		
+	</resultMap>
+	
+	<select id="selectByStationCode" parameterType="String" resultType="String">
+		SELECT station_name 
+		FROM stations 
+		WHERE station_code = #{stationCode}
 	</select>
 	
-	<select id="getLine" parameterType="String" resultType="station">
+	<select id="selectStationByID" parameterType="String" resultType="station">
+		SELECT * FROM stations 
+		WHERE station_code = #{value} 
+	</select>
+	
+	<!-- 
+		stations 테이블은 역의 모든 코드 존재
+		station_exits 테이블은 하나의 코드만 존재
+	-->
+	<select id="selectStationCode" parameterType="String" resultType="String">
+		SELECT station_code 
+		FROM station_exits 
+		WHERE station_code IN (
+								SELECT station_code 
+								FROM stations 
+								WHERE station_name = (
+														SELECT station_name 
+														FROM stations 
+														WHERE station_code=#{value}
+													 )
+							  ) 
+		GROUP BY station_code
+														
+	</select>
+	
+	<select id="selectExitNumber" parameterType="String" resultType="String">
+		SELECT exit_number FROM station_exits 
+		WHERE station_code = #{value} 
+		GROUP BY exit_number
+	</select>
+	
+	<select id="selectExitInfo" parameterType="map" resultType="String">
+		SELECT spot FROM station_exits 
+		WHERE station_code = #{stationCode} 
+		AND exit_number = #{exitNumber} 	
+	</select>
+	
+	<select id="selectLinesByID" parameterType="String" resultType="String">
+		SELECT line FROM stations 
+		WHERE station_name = (
+								SELECT station_name 
+								FROM stations 
+								WHERE station_code = #{value}
+							 )
+	</select>
+	
+	<select id="selectAllByLine" parameterType="String" resultType="station">
+		SELECT line, station_code, station_name 
+		FROM stations 
+		WHERE line= #{value}
+	</select>
+	
+	<select id="getLineInfo" parameterType="String" resultType="station">
 		SELECT STATION_CODE, STATION_NAME, STATION_NAME_ENG, LINE, F_CODE
 		FROM stations 
-		WHERE line = #{lineNumber} 
+		WHERE line = #{line} 
 		ORDER BY f_code
 	</select>
 </mapper>

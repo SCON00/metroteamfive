@@ -67,4 +67,19 @@ public class StationDAOImpl implements StationDAO {
 		}
 		return data;
 	}
+	
+	/**
+	 * 라인정보 조회
+	 */
+	@Override
+	public List<StationVO> getLineInfo(String line) {
+		
+		System.out.println(line + ": DAO");
+		
+		List<StationVO> list = mybatis.selectList("station.getLineInfo", line);
+		
+		System.out.println(list);
+		
+		return list;
+	}
 }

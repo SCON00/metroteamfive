@@ -1,10 +1,13 @@
 package com.metro.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.metro.domain.StationVO;
@@ -40,4 +43,22 @@ public class StationController {
 		mv.setViewName("station/station");
 		return mv;
 	}
+	
+	// 라인정보 가져오기
+		@RequestMapping(value="line.do", produces="application/text; charset=utf8")
+		public ModelAndView line(@RequestParam("line") String line) {
+			
+			System.out.println(line + ": Controller");
+			
+			List<StationVO> list = stationService.lineInfo(line);
+			
+			System.out.println(list);
+			
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("list", list);
+			mv.addObject("listSize", list.size());
+			mv.setViewName("station/line");
+			
+			return mv;
+		}
 }

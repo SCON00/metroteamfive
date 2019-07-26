@@ -72,4 +72,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM stations 
 		WHERE line= #{value}
 	</select>
+	
+	<select id="getLineInfo" parameterType="String" resultType="station">
+		SELECT STATION_CODE, STATION_NAME, STATION_NAME_ENG, LINE, F_CODE
+		FROM stations 
+		WHERE line = #{line} 
+		ORDER BY f_code
+	</select>
 </mapper>
