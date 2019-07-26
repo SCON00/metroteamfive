@@ -20,48 +20,167 @@
 			<div id="srch" class="srch">
 				<!-- 지하철 호선 -->
 				<div class="hosunTxt">
-					<div class="align">지하철 호선</div>
+					<div class="align font-weight-bold">지하철 호선</div>
 				</div>
 				<div>
 					<div class="alignLine">
-						<div class="lnTxt"><a href="lineInfo.do?lineNumber=01호선">01호선</a></div>
-						<div class="lnTxt"><a href="lineInfo.do?lineNumber=02호선">02호선</a></div>
-						<div class="lnTxt"><a href="lineInfo.do?lineNumber=03호선">03호선</a></div>
-						<div class="lnTxt"><a href="lineInfo.do?lineNumber=04호선">04호선</a></div>
-						<div class="lnTxt"><a href="lineInfo.do?lineNumber=05호선">05호선</a></div>
-						<div class="lnTxt"><a href="lineInfo.do?lineNumber=06호선">06호선</a></div>
-						<div class="lnTxt"><a href="lineInfo.do?lineNumber=07호선">07호선</a></div>
-						<div class="lnTxt"><a href="lineInfo.do?lineNumber=08호선">08호선</a></div>
-						<div class="lnTxt"><a href="lineInfo.do?lineNumber=09호선">09호선</a></div>
-						<div class="lnTxt"><a href="lineInfo.do?lineNumber=경의선">경의중앙</a></div>
-						<div class="lnTxt"><a href="lineInfo.do?lineNumber=공항철도">공 항</a></div>
-						<div class="lnTxt"><a href="lineInfo.do?lineNumber=경춘선">경 춘</a></div>
-						<div class="lnTxt"><a href="lineInfo.do?lineNumber=인천선">인 천</a></div>
-						<div class="lnTxt"><a href="lineInfo.do?lineNumber=수인선">수 인</a></div>
-						<div class="lnTxt"><a href="lineInfo.do?lineNumber=분당선">분 당</a></div>
-						<div class="lnTxt"><a href="lineInfo.do?lineNumber=신분당선">신분당</a></div>
-						<div class="lnTxt"><a href="lineInfo.do?lineNumber=우이신설경전철">우이신설</a></div>
+						<div class="lnTxt btn btn-link">
+							<a href="lineInfo.do?line=01호선" style="color: #00498B;">01호선</a>
+						</div>
+						<div class="lnTxt btn btn-link">
+							<a href="lineInfo.do?line=02호선" style="color: #009246;">02호선</a>
+						</div>
+						<div class="lnTxt btn btn-link">
+							<a href="lineInfo.do?line=03호선" style="color: #F36630;">03호선</a>
+						</div>
+						<div class="lnTxt btn btn-link">
+							<a href="lineInfo.do?line=04호선" style="color: #00A2D1;">04호선</a>
+						</div>
+						<div class="lnTxt btn btn-link">
+							<a href="lineInfo.do?line=05호선" style="color: #A064A3;">05호선</a>
+						</div>
+						<div class="lnTxt btn btn-link">
+							<a href="lineInfo.do?line=06호선" style="color: #9E4510;">06호선</a>
+						</div>
+						<div class="lnTxt btn btn-link">
+							<a href="lineInfo.do?line=07호선" style="color: #5D6519;">07호선</a>
+						</div>
+						<div class="lnTxt btn btn-link">
+							<a href="lineInfo.do?line=08호선" style="color: #D6406A;">08호선</a>
+						</div>
+						<div class="lnTxt btn btn-link">
+							<a href="lineInfo.do?line=09호선" style="color: #A17E46;">09호선</a>
+						</div>
+						<div class="lnTxt btn btn-link">
+							<a href="lineInfo.do?line=경의선" style="color: #72C7A6;">경의중앙</a>
+						</div>
+						<div class="lnTxt btn btn-link">
+							<a href="lineInfo.do?line=공항철도" style="color: #0065B3;">공 항</a>
+						</div>
+						<div class="lnTxt btn btn-link">
+							<a href="lineInfo.do?line=경춘선" style="color: #2ABFD0;">경 춘</a>
+						</div>
+						<div class="lnTxt btn btn-link">
+							<a href="lineInfo.do?line=인천선" style="color: #6E98BB;">인 천</a>
+						</div>
+						<div class="lnTxt btn btn-link">
+							<a href="lineInfo.do?line=인천2호선" style="color: #ED8B00;">인 천2</a>
+						</div>
+						<div class="lnTxt btn btn-link">
+							<a href="lineInfo.do?line=수인선" style="color: #E9A600;">수 인</a>
+						</div>
+						<div class="lnTxt btn btn-link">
+							<a href="lineInfo.do?line=분당선" style="color: #D4A017;">분 당</a>
+						</div>
+						<div class="lnTxt btn btn-link">
+							<a href="lineInfo.do?line=신분당선" style="color: #BB1833;">신분당</a>
+						</div>
+						<div class="lnTxt btn btn-link">
+							<a href="lineInfo.do?line=우이신설경전철" style="color: #B7C452;">우이신설</a>
+						</div>
 					</div>
 				</div>
 				<!-- 지하철 호선 검색결과 -->
 				<div id="searchResult" class="searchResult">
-					<div class="title">지하철역 정보
-						<img style="position: relative; float: right; right: 22px; top: 6px; width: 18px; height: 18px;"
-							id="upArro" src="../resources/img/upArro.png" alt="upArro" /> 
-						<img style="position: relative; float: right; right: 53px; top: 6px; width: 18px; height: 18px;"
-							id="downArro" src="../resources/img/downArro.png" alt="downArro" />
-					</div>
+					<div class="title font-weight-bold">지하철역 정보</div>
 				</div>
 				<c:forEach var="m" items="${list}">
-					<div id="resultPoint" style="clear: both;" class="stnm"> 
-						<div style="float: left;" onclick="makeArvlSubway();javascript:window.scrollTo(0,0);">
-							<a href="">${m.stationName}(${m.stationNameEng})</a>
+					<div id="resultPoint" style="clear: both;" class="stnm">
+						<div style="float: left;">
+							<c:set var="line" value="${m.line}" />
+							<c:choose>
+								<c:when test="${line eq '01호선'}">
+									<a style="color: #00498B;" class="btn btn-link"
+										href="station.do?stationName=${m.stationName}">
+										${m.stationName}(${m.stationNameEng})</a>
+								</c:when>
+								<c:when test="${line eq '02호선'}">
+									<a style="color: #009246;" class="btn btn-link"
+										href="station.do?stationName=${m.stationName}">
+										${m.stationName}(${m.stationNameEng})</a>
+								</c:when>
+								<c:when test="${line eq '03호선'}">
+									<a style="color: #F36630;" class="btn btn-link"
+										href="station.do?stationName=${m.stationName}">
+										${m.stationName}(${m.stationNameEng})</a>
+								</c:when>
+								<c:when test="${line eq '04호선'}">
+									<a style="color: #00A2D1;" class="btn btn-link"
+										href="station.do?stationName=${m.stationName}">
+										${m.stationName}(${m.stationNameEng})</a>
+								</c:when>
+								<c:when test="${line eq '05호선'}">
+									<a style="color: #A064A3;" class="btn btn-link"
+										href="station.do?stationName=${m.stationName}">
+										${m.stationName}(${m.stationNameEng})</a>
+								</c:when>
+								<c:when test="${line eq '06호선'}">
+									<a style="color: #9E4510;" class="btn btn-link"
+										href="station.do?stationName=${m.stationName}">
+										${m.stationName}(${m.stationNameEng})</a>
+								</c:when>
+								<c:when test="${line eq '07호선'}">
+									<a style="color: #5D6519;" class="btn btn-link"
+										href="station.do?stationName=${m.stationName}">
+										${m.stationName}(${m.stationNameEng})</a>
+								</c:when>
+								<c:when test="${line eq '08호선'}">
+									<a style="color: #D6406A;" class="btn btn-link"
+										href="station.do?stationName=${m.stationName}">
+										${m.stationName}(${m.stationNameEng})</a>
+								</c:when>
+								<c:when test="${line eq '09호선'}">
+									<a style="color: #A17E46;" class="btn btn-link"
+										href="station.do?stationName=${m.stationName}">
+										${m.stationName}(${m.stationNameEng})</a>
+								</c:when>
+								<c:when test="${line eq '경의선'}">
+									<a style="color: #72C7A6;" class="btn btn-link"
+										href="station.do?stationName=${m.stationName}">
+										${m.stationName}(${m.stationNameEng})</a>
+								</c:when>
+								<c:when test="${line eq '공항철도'}">
+									<a style="color: #0065B3;" class="btn btn-link"
+										href="station.do?stationName=${m.stationName}">
+										${m.stationName}(${m.stationNameEng})</a>
+								</c:when>
+								<c:when test="${line eq '경춘선'}">
+									<a style="color: #2ABFD0;" class="btn btn-link"
+										href="station.do?stationName=${m.stationName}">
+										${m.stationName}(${m.stationNameEng})</a>
+								</c:when>
+								<c:when test="${line eq '인천선'}">
+									<a style="color: #6E98BB;" class="btn btn-link"
+										href="station.do?stationName=${m.stationName}">
+										${m.stationName}(${m.stationNameEng})</a>
+								</c:when>
+								<c:when test="${line eq '인천2호선'}">
+									<a style="color: #ED8B00;" class="btn btn-link"
+										href="station.do?stationName=${m.stationName}">
+										${m.stationName}(${m.stationNameEng})</a>
+								</c:when>
+								<c:when test="${line eq '수인선'}">
+									<a style="color: #E9A600;" class="btn btn-link"
+										href="station.do?stationName=${m.stationName}">
+										${m.stationName}(${m.stationNameEng})</a>
+								</c:when>
+								<c:when test="${line eq '분당선'}">
+									<a style="color: #D4A017;" class="btn btn-link"
+										href="station.do?stationName=${m.stationName}">
+										${m.stationName}(${m.stationNameEng})</a>
+								</c:when>
+								<c:when test="${line eq '신분당선'}">
+									<a style="color: #BB1833;" class="btn btn-link"
+										href="station.do?stationName=${m.stationName}">
+										${m.stationName}(${m.stationNameEng})</a>
+								</c:when>
+								<c:when test="${line eq '우이신설경전철'}">
+									<a style="color: #B7C452;" class="btn btn-link"
+										href="station.do?stationName=${m.stationName}">
+										${m.stationName}(${m.stationNameEng})</a>
+								</c:when>
+							</c:choose>
 						</div>
-						<div style="float: right;">
-							<img src="../resources/img/v_line.png" alt="라인" class="vline">
-							<img src="../resources/img/v_line.png" alt="라인" class="vline2">
-						</div>
-					</div>
 				</c:forEach>
 			</div>
 		</div>
