@@ -19,5 +19,7 @@ public interface StationDAO {
 	
 	Map<String, List<StationVO>> selectLines(String stationCode);			// 역 기준 경유 노선 조회
 	
+	List<StationVO> selectStationCodes(String stationCode);					// 해당 역 코드 전부 조회
+	
 	List<StationVO> getLineInfo(String line);								// 라인정보 조회
 }

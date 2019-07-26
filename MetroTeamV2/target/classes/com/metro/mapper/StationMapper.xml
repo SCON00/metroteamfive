@@ -72,6 +72,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM stations 
 		WHERE line= #{value}
 	</select>
+		
+	<select id="selectByLineAndId" parameterType="station" resultType="station">
+		SELECT * FROM (
+			SELECT * 
+			FROM stations 
+			WHERE line= #{line} AND station_code 
+				<choose>
+					<when test="inOrOut == 1">
+						<![CDATA[>=]]>
+					</when>
+					<otherwise>
+						<![CDATA[<=]]>
+					</otherwise>
+				</choose> 
+				#{stationCode}        
+			ORDER BY station_code <if test="inOrOut == 2">DESC</if>
+			) 
+		WHERE rownum <![CDATA[<=]]> 7 <if test="inOrOut == 2">ORDER BY station_code</if>
+	</select>
+	
+	<select id="selectStationCodes" parameterType="String" resultType="station">
+		SELECT station_code, line 
+		FROM stations 
+		WHERE station_name = (
+								SELECT station_name 
+								FROM stations 
+								WHERE station_code = #{value}
+								)
+	</select>
 	
 	<select id="getLineInfo" parameterType="String" resultType="station">
 		SELECT STATION_CODE, STATION_NAME, STATION_NAME_ENG, LINE, F_CODE

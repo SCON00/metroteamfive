@@ -18,4 +18,6 @@ public interface StationService {
 	
 	List<StationVO> lineInfo(String line);							// 라인 정보
 
+	List<StationVO> getCodes(String stationCode);	// 해당 역 코드 전부 조회
+
 }

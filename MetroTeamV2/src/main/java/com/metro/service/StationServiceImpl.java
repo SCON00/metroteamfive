@@ -125,6 +125,12 @@ public class StationServiceImpl implements StationService{
 	}
 	
 	@Override
+	public List<StationVO> getCodes(String stationCode) {
+		
+		return stationDAO.selectStationCodes(stationCode);
+	}
+	
+	@Override
 	public List<StationVO> lineInfo(String line) {
 		
 		System.out.println(line + ": Service");
