@@ -44,7 +44,11 @@ public class StationController {
 		return mv;
 	}
 	
-	// 라인정보 가져오기
+	/**
+	 * 라인정보 가져오기
+	 * @param line
+	 * @return
+	 */
 		@RequestMapping(value="line.do", produces="application/text; charset=utf8")
 		public ModelAndView line(@RequestParam("line") String line) {
 			

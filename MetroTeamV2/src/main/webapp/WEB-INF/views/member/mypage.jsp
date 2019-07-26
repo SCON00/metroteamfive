@@ -28,7 +28,6 @@
 
 <body>
 
-<%@ include file="../../../sampleindex.jsp" %>
 
   <!-- Page Content -->
   <div class="container">

@@ -11,6 +11,7 @@
 	<typeAlias type="com.metro.domain.MemberVO" alias='member'/>
 	<typeAlias type="com.metro.domain.StationVO" alias='station'/>
 	<typeAlias type="com.metro.domain.CsVO" alias='cs'/>
+	<typeAlias type="com.metro.domain.FavoriteStationVO" alias='favoritestation'/>
 </typeAliases>
 </configuration>
 
