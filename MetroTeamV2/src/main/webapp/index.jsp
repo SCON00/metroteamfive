@@ -11,7 +11,7 @@
 	name='viewport' />
 <meta name="viewport" content="width=device-width" />
 <link href="resources/css/bootstrap.css" rel="stylesheet" />
-<link href="resources/css/quickmenu.css" rel="stylesheet" />
+<link href="resources/css/cs.css" rel="stylesheet" />
 <script type="text/javascript" src='resources/js/jquery-3.4.1.js'></script>
 <script type="text/javascript" src='resources/js/bootstrap.js'></script>
 
@@ -75,8 +75,8 @@
 			이미지 순서: 날씨, 역/노선검색, 메세지, 상향, 하향
 	 -->
 	<div id="quickMenu">
-		<img id="weather" src="./resources/img/quickmenu_cloudy.png" 
-			class="img-responsive" alt="Responsive image"/><br/>
+<!-- 		<img id="weather" src="./resources/img/quickmenu_cloudy.png" 
+			class="img-responsive" alt="Responsive image"/><br/> -->
 		<img id="map" src="./resources/img/quickmenu_map.png" 
 			class="img-responsive" alt="Responsive image"/><br/>
 		<img id="message" src="./resources/img/quickmenu_conversation.png" 
