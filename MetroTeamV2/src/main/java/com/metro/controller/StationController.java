@@ -49,20 +49,20 @@ public class StationController {
 	 * @param line
 	 * @return
 	 */
-		@RequestMapping(value="line.do", produces="application/text; charset=utf8")
-		public ModelAndView line(@RequestParam("line") String line) {
-			
-			System.out.println(line + ": Controller");
-			
-			List<StationVO> list = stationService.lineInfo(line);
-			
-			System.out.println(list);
-			
-			ModelAndView mv = new ModelAndView();
-			mv.addObject("list", list);
-			mv.addObject("listSize", list.size());
-			mv.setViewName("station/line");
-			
-			return mv;
-		}
+	@RequestMapping(value="line.do", produces="application/text; charset=utf8")
+	public ModelAndView line(@RequestParam("line") String line) {
+		
+		System.out.println(line + ": Controller");
+		
+		List<StationVO> list = stationService.lineInfo(line);
+		
+		System.out.println(list);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("list", list);
+		mv.addObject("listSize", list.size());
+		mv.setViewName("station/line");
+		
+		return mv;
+	}
 }

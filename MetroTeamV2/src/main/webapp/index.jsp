@@ -53,7 +53,7 @@
 				<tr>
 					<th scope="row"><a href='member/mypage.do'
 						class='btn btn-outline-warning'>마이페이지</a></th>
-					<td><a href='station/line.do' class='btn btn-outline-success'>LINE-INFO</a></td>
+					<td><a href='station/line.do?line=01호선' class='btn btn-outline-success'>LINE</a></td>
 					<td><a href='train/traininfo.do'
 						class='btn btn-outline-secondary'>TRAIN-INFO</a></td>
 					<td><a href='cs/favorite.do' class='btn btn-outline-primary'>즐겨찾기</a></td>
