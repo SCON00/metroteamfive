@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.metro.domain.FavoriteStationVO;
+
 import com.metro.domain.MemberVO;
 import com.metro.service.MemberService;
 
@@ -32,6 +32,11 @@ public class MemberController {
 	@RequestMapping(value="{url}.do")	// 단순 경로 테스트용
 	public String common(@PathVariable String url) {
 		return "/member/" + url;
+	}
+	
+	@RequestMapping("loginHome.do")
+	public String test2(){
+		return "loginHome";
 	}
 
 	// 맨 처음 hiddenindex에서 시작해서 메인페이지 가기
@@ -61,12 +66,13 @@ public class MemberController {
 	@RequestMapping(value="logout.do")
 	public String logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		session.invalidate();
+		return "redirect:/member/start.do";
 		
-		String url = "";
+//		String url = "";
 //		url = "redirect:/sampleindex.jsp";
 		// ****** sampleindex.jsp include 시 아래 url 주석 풀기 ******
-		url = "home";
-		return url;
+//		url = "home";
+//		return url;
 	}
 	
 	// 마이페이지 이동
@@ -224,7 +230,7 @@ public class MemberController {
 		System.out.println("getfavoritelist.do 들어옴...");
 		String str ="";
 		String mid = (String)session.getAttribute("realMid");
-		List<FavoriteStationVO> list = memberService.getFavoriteList(mid);
+		List list = memberService.getFavoriteList(mid);
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			str = mapper.writeValueAsString(list);
@@ -245,6 +251,24 @@ public class MemberController {
 		String mid = (String)session.getAttribute("realMid");
 		memberService.editFavorite(mid, list);
 
+	}
+	
+	// 즐겨찾기 추가 ( 하나씩 추가로 string으로 받고 있음.)
+	@RequestMapping(value="addfavoritelist.do", produces="application/text; charset=UTF-8")
+	@ResponseBody
+	public void addFavoriteList(@RequestParam(value="sname")String sname, HttpSession session) {
+		System.out.println("addfavoritelist.do 호출ㄹ");
+		String mid = (String)session.getAttribute("realMid");
+		memberService.addFavoriteList(mid, sname);
+	}
+	
+	// 즐겨찾기 삭제 ( 하나씩 삭제 String으로 받아서 넘김)
+	@RequestMapping(value="editFavoriteBySname.do", produces="application/text; charset=UTF-8")
+	@ResponseBody
+	public void editFavoriteBySname(@RequestParam(value="sname")String sname, HttpSession session) {
+		System.out.println("editFavoriteBySname.do 들어옴");
+		String mid = (String)session.getAttribute("realMid");
+		memberService.editFavoriteBySname(mid, sname);
 	}
 	
 	// 마이페이지 -> 검색기록 페이지에 띄울 목록 가져오기

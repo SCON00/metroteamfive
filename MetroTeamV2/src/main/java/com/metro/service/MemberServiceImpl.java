@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.metro.dao.MemberDAO;
-import com.metro.domain.FavoriteStationVO;
 import com.metro.domain.MemberVO;
 
 @Service("memberService")
@@ -35,7 +34,7 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.formCheck(vo);
 	}
 	
-	public List<FavoriteStationVO> getFavoriteList(String mid){
+	public List getFavoriteList(String mid){
 		return memberDAO.getFavoriteList(mid);
 	}
 	
@@ -50,6 +49,14 @@ public class MemberServiceImpl implements MemberService {
 	
 	public void editHistory(String mid, List<String> list) {
 		memberDAO.editHistory(mid, list);
+	}
+	
+	public void addFavoriteList(String mid, String sname) {
+		memberDAO.addFavoriteList(mid, sname);
+	}
+	
+	public void editFavoriteBySname(String mid, String sname) {
+		memberDAO.editFavoriteBySname(mid, sname);
 	}
 }
  

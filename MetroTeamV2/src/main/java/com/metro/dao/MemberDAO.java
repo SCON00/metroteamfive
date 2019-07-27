@@ -2,7 +2,6 @@ package com.metro.dao;
 
 import java.util.List;
 
-import com.metro.domain.FavoriteStationVO;
 import com.metro.domain.MemberVO;
 
 public interface MemberDAO {
@@ -24,11 +23,15 @@ public interface MemberDAO {
 	
 	public MemberVO formCheck(MemberVO vo);
 
-	public List<FavoriteStationVO> getFavoriteList(String mid);
+	public List getFavoriteList(String mid);
 
 	public void editFavorite(String mid, List<String> list);
 	
 	public List getHistoryList(String mid);
 	
 	public void editHistory(String mid, List<String> list);
+	
+	public void addFavoriteList(String mid, String sname);
+	
+	public void editFavoriteBySname(String mid, String sname);
 }

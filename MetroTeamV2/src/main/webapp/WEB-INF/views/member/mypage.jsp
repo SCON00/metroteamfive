@@ -28,6 +28,7 @@
 
 <body>
 
+<%@ include file="../../../sampleindex.jsp" %>
 
   <!-- Page Content -->
   <div class="container">
@@ -45,8 +46,8 @@
           <div id="customercenterlist" class="panel-collapse collapse" role="tabpanel">
           	<div class="list-group">
           		<a href="#" id="sendQA" class="list-group-item text-center">문의하기</a>
-          		<a href="#" id="" class="list-group-item text-center">이용약관</a>
-          		<a href="#" id="" class="list-group-item text-center">위치기반서비스 이용약관</a>
+          		<a href="#" id="totermofservice" class="list-group-item text-center">이용약관</a>
+          		<a href="#" id="totermoflocation" class="list-group-item text-center">위치기반서비스 이용약관</a>
           	</div>
           </div>     
       </div>
@@ -128,7 +129,7 @@
       <form action="" class="form-horizontal editprofileform" name="editprofilform" id="editprofilform" method="post">
       	<div class="logo mb-3">
            <div class="text-left">
-              <h3 class="card-title">개인&nbsp정보</h3>
+              <h3 class="card-title">개인정보수정</h3>
            </div>
         </div>
 							<div class="form-group">
@@ -165,9 +166,11 @@
       </div>
       <!-- end of 개인 정보 수정 페이지 -->
       
+      <!-- 문의하기 -->
       <div id="showsendQA" class="hide col-lg-9 mypageContent">
 		<!-- 문의하기 폼 -->
 	<!-- <div class="row"> -->
+	<h3 class="card-title">문의하기</h3>
 		<div class="col-xs-6 mx-auto col-md-offset-3">
 			<form action="<%=application.getContextPath()%>/cs/saveQA.do" method="post" class="form" id="qnaForm" enctype="multipart/form-data">
 			
@@ -213,6 +216,22 @@
 	<!-- </div>  -->     	
 	
       </div>
+      <!-- end of 문의하기 -->
+      
+       <!-- 이용약관 페이지 -->
+      <div id="termofservice" class="hide mypageContent col-lg-9">
+      	
+      	<h3 class="card-title">이용약관</h3>
+      </div>
+       <!-- end of 이용약관 페이지 -->
+      
+      
+       <!-- 위치기반서비스약관 페이지 -->
+      <div id="termoflocation" class="hide mypageContent col-lg-9">
+      	
+      	<h3 class="card-title">위치기반서비스약관</h3>
+      	</div>
+ 	     <!-- end of 위치기반서비스약관 페이지 -->
 
     </div>
     
@@ -231,7 +250,7 @@
         <form>
           <div class="form-group">
             <label for="recipient-name" class="control-label">아이디</label>
-            <input type="text" class="form-control" id="username" value='<%=(String)session.getAttribute("mid")%>'>
+            <input type="text" class="form-control" id="username" value='<%=(String)session.getAttribute("mid")%>' readonly>
           </div>
           <div class="form-group">
             <label for="message-text" class="control-label">비밀번호</label>
@@ -252,7 +271,9 @@
   <div class="modal" id="exampleModalFail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-    	비밀번호가 잘못됨.
+    <div class="modal-header">
+    	비밀번호가 잘못되었습니다.
+    	</div>
     	<button type="button" class="btn btn-default" data-dismiss="modal" id="editcancle">창닫기</button>
     </div>
     </div>
@@ -263,9 +284,10 @@
     <div class="modal" id="needpass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-     	개인정보수정을&nbsp수정을&nbsp위해서
-     	<br/>
-     	비밀번호가&nbsp필요합니다.
+    <div class="modal-header">
+     	개인정보수정을 위해서 비밀번호가 필요합니다.
+     </div>
+     <button type="button" class="btn btn-default" data-dismiss="modal" id="editcancle">창닫기</button>
     </div>
     </div>
     </div>
@@ -275,7 +297,9 @@
     <div class="modal" id="editProfileSuccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
+    <div class="modal-header">
     	성공적으로 변경되었습니다.
+    	</div>
     	<button type="button" class="btn btn-default" data-dismiss="modal" id="editcancle">창닫기</button>
     </div>
     </div>

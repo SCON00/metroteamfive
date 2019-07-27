@@ -8,7 +8,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.metro.domain.FavoriteStationVO;
 import com.metro.domain.MemberVO;
 
 @Repository("memberDAO")
@@ -57,7 +56,7 @@ public class MemberDAOImpl implements MemberDAO {
 		return mybatis.selectOne("member.formCheck", vo);
 	}
 	
-	public List<FavoriteStationVO> getFavoriteList(String mid){
+	public List getFavoriteList(String mid){
 		System.out.println("======> mybatis getFavoriteList 호출");
 		return mybatis.selectList("member.getFavoriteList", mid);
 	}
@@ -65,10 +64,19 @@ public class MemberDAOImpl implements MemberDAO {
 	public void editFavorite(String mid, List<String> list){
 		System.out.println("===> mybatis editFavorite 호출");
 		for(int i=0; i<list.size(); i++) {
-			Map map = new HashMap();
-			map.put("mid", mid);
-			map.put("sid", list.get(i));
-			mybatis.delete("member.editFavorite", map);
+			String scode = list.get(i);
+				List codeList = mybatis.selectList("member.getStationCodeByScode", scode);
+				for(int j=0; j<codeList.size(); j++) {
+					System.out.println(codeList.get(j));
+					Map realStationCode = (Map)codeList.get(j);
+					Map map = new HashMap();
+					map.put("mid", mid);
+					map.put("station_code", realStationCode.get("STATION_CODE"));
+					mybatis.delete("member.editFavorite", map);
+				}
+
+			
+			
 		}
 	}
 	
@@ -84,6 +92,32 @@ public class MemberDAOImpl implements MemberDAO {
 			map.put("mid", mid);
 			map.put("sid", list.get(i));
 			mybatis.delete("member.editHistory", map);
+		}
+	}
+	
+	public void addFavoriteList(String mid, String sname) {
+		System.out.println("====> mybatis.addFavoriteList 호출");
+		List list = mybatis.selectList("member.getStationCodeBySname", sname);
+		System.out.println("여긴 ㄷ된ㄹㄹㅇㅇ"+list.get(0));
+		
+		for(int i=0; i<list.size(); i++) {
+			Map sCode = (Map)list.get(i);
+			Map map = new HashMap();
+			map.put("mid", mid);
+			map.put("station_code", sCode.get("STATION_CODE"));
+			mybatis.insert("member.addFavoriteList", map);
+		}
+	}
+	
+	public void editFavoriteBySname(String mid, String sname) {
+		System.out.println("=====> mybatis.editFavoriteBySname 호출");
+		List list = mybatis.selectList("member.getStationCodeBySname", sname);
+		for(int i=0; i<list.size(); i++) {
+			Map sCode = (Map)list.get(i);
+			Map map = new HashMap();
+			map.put("mid", mid);
+			map.put("station_code", sCode.get("STATION_CODE"));
+			mybatis.delete("member.editFavorite", map);
 		}
 	}
 }
