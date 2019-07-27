@@ -59,7 +59,7 @@
 					<td><a href='cs/favorite.do' class='btn btn-outline-primary'>즐겨찾기</a></td>
 				</tr>
 				<tr>
-					<th scope="row"><a href="#" class='btn btn-outline-warning'>박유진</a></th>
+					<th scope="row"><a href="cs/auto2.do" class='btn btn-outline-warning'>박유진</a></th>
 					<td><a href="cs/qAList.do" class='btn btn-outline-success'>QnA목록</a></td>
 					<td><a href="cs/noticeAllList.do"
 						class='btn btn-outline-secondary'>공지사항</a></td>
@@ -74,9 +74,10 @@
 		##### 퀵메뉴바 #####
 			이미지 순서: 날씨, 역/노선검색, 메세지, 상향, 하향
 	 -->
+<!-- 	 
 	<div id="quickMenu">
-<!-- 		<img id="weather" src="./resources/img/quickmenu_cloudy.png" 
-			class="img-responsive" alt="Responsive image"/><br/> -->
+ 		<img id="weather" src="./resources/img/quickmenu_cloudy.png" 
+			class="img-responsive" alt="Responsive image"/><br/>
 		<img id="map" src="./resources/img/quickmenu_map.png" 
 			class="img-responsive" alt="Responsive image"/><br/>
 		<img id="message" src="./resources/img/quickmenu_conversation.png" 
@@ -86,48 +87,7 @@
 		<img id="down" src="./resources/img/quickmenu_down.png" 
 			class="img-responsive" alt="Responsive image"/>
 	</div>
-	
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
-	a<br />
+	 -->
 	
 </body>
 </html>

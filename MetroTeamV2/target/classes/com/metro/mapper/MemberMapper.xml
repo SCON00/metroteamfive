@@ -91,15 +91,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 	</select>
 	
-	<select id="getFavoriteList" parameterType="String" resultType="favoritestation">
-		SELECT station.sid, station.sname, station.direction, station.lno, station.info, station.addr, station.stel
-		FROM station, bookmark
-		WHERE mid=#{mid} AND station.sid = bookmark.sid
+	<select id="getFavoriteList" parameterType="String" resultType="hashMap">
+		SELECT stations.station_code, stations.station_name, stations.line
+		FROM stations, bookmark
+		WHERE mid=#{mid} AND stations.station_code = bookmark.station_code
 	</select>
 	
 	<delete id="editFavorite" parameterType="hashMap">
 		DELETE FROM bookmark 
-		WHERE mid=#{mid} AND sid=#{sid}
+		WHERE mid=#{mid} AND station_code=#{station_code}
 	</delete>
 	
 	<select id="getHistoryList" parameterType="String" resultType="hashMap">
@@ -113,5 +113,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		DELETE FROM history
 		WHERE mid=#{mid} AND sid=#{sid}
 	</delete>
+	
+	<insert id="addFavoriteList" parameterType="hashMap">
+		INSERT INTO bookmark (MID, STATION_CODE) 
+		VALUES (#{mid}, #{station_code})
+	</insert>
+	
+	<select id="getStationCodeBySname" parameterType="String" resultType="hashMap">
+		SELECT station_code
+		FROM stations
+		WHERE station_name=#{sname}
+	</select>
+	
+	<select id="getStationCodeByScode" parameterType="String" resultType="hashMap">
+		SELECT station_code
+		FROM stations
+		WHERE station_name=(SELECT station_name FROM stations WHERE station_code=#{scode})
+	</select>
 
 </mapper>

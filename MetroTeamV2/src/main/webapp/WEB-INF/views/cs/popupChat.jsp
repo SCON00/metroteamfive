@@ -65,7 +65,7 @@
 											</ul>
 										</div>
 										<input type="text" id="sname" class="form-control"
-											placeholder="역이름(Ex)서울)" /><span class="input-group-btn">
+											placeholder="역이름(Ex)서울역->서울)" /><span class="input-group-btn">
 											<button class="btn btn-default" type="button" id="insertBtn">
 												<img src="./../resources/img/noticeList_search.png">
 											</button>
