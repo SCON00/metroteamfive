@@ -55,7 +55,7 @@
 					<br />
 					
 					<!-- 추가적으로 보내야 될 정보_회원ID -->
-					<input type="hidden" name="mid" value="27">
+					<input type="hidden" name="mid" value="<%=(String)session.getAttribute("realMid")%>">
 
 					<!-- 보내기 버튼 -->
 					<input type="submit" value="보내기" class="btn btn-default btn-lg btn-block" />
