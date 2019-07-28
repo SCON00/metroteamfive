@@ -1,5 +1,195 @@
 @CHARSET "UTF-8";
 
+/* 1호선 */
+.line1Train1 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+.line1Train2 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+.line1Train3 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+/* 2호선 */
+.line2Train1 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+.line2Train2 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+.line2Train3 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+/* 3호선 */
+.line3Train1 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+/* 4호선 */
+.line4Train1 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+.line4Train2 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+/* 5호선 */
+.line5Train1 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+.line5Train2 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+/* 6호선 */
+.line6Train1 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+/* 7호선 */
+.line7Train1 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+.line7Train2 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+/* 8호선 */
+.line8Train1 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+.line8Train2 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+.line8Train3 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+.line8Train4 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+/* 9호선 */
+.line9Train1 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+/* 경의선 */
+.lineGyeonguiTrain1 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+/* 공항철도 */
+.lineAirportTrain1 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+/* 경춘선 */
+.lineGyeongchunTrain1 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+/* 인천선 */
+.lineIncheonTrain1 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+/* 인천2호선 */
+.line2IncheonTrain1 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+/* 수인선 */
+.lineSuinTrain1 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+/* 분당선 */
+.lineBundangTrain1 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+/* 신분당선 */
+.lineShinbundangTrain1 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+/* 우이신설경전철 */
+.lineUiSinseolTrain1 { 
+	width: 30px; 
+	height: 40px;
+	position: relative;
+}
+
+.up {
+    position: absolute;
+}
+
 /* 지하철 호선 */
 .wrapSearch .align {
 	height: 31px;
@@ -20,7 +210,7 @@
 	float: left;
 	text-align: center;
 	height: 34px;
-	border: 1px solid #d4d4d4;
+	border: 1px solid #fade0c;
 	margin: 1px;
 }
 
@@ -32,14 +222,14 @@
 
 .searchResult .title {
 	line-height: 32px;
-	border-bottom: 2px solid #0093d0;
+	border-bottom: 2px solid #fade0c;
 }
 
 .searchResult .stnm {
 	height: 34px;
 	line-height: 34px;
 	padding-left: 14px;
-	border-bottom: 1px solid #d4d4d4;
+	border-bottom: 1px solid #fade0c;
 }
 
 .searchResult .vline {
