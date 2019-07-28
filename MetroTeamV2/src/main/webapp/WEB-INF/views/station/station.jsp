@@ -57,7 +57,7 @@
 								<i class='fas fa-angle-left'></i>${line.value[1][fn:length(line.value[1])-2].stationName}
 							</div>
 							<div class="card-body text-white">
-								<h5 class="card-title">${result.stationName}</h5>
+								<h5 class="card-title" id="station-name">${result.stationName}</h5>
 								<%-- <p class="card-text">${result.ure}</p> --%>
 							</div>
 							<div class="card-footer bg-transparent border-${line.key} text-white text-right">
@@ -261,7 +261,7 @@ $(function(){
 		setExitInfo($(this).text());
 	});
 	var code = $('#station-code').val();
-	stationMap(code);	
+		
 	/* setInterval(function(){ 
 		trainSchedule("03호선",code, 1);
 		trainSchedule("03호선",code, 2);
@@ -272,6 +272,13 @@ $(function(){
 		trainSchedule($(this).attr("id"), $(this).val(),1);
 		trainSchedule($(this).attr("id"), $(this).val(),2);
 	})
+	stationMap(code);
+	setInterval(function(){ 
+		$('.station-codes').each(function(){
+			trainSchedule($(this).attr("id"), $(this).val(),1);
+			trainSchedule($(this).attr("id"), $(this).val(),2);
+		});
+	},5678);
 	
 	// 호선 정보 변경
 	$('.lines-link').on('click', function(){
@@ -289,6 +296,7 @@ $(function(){
 			$(this).addClass("btn-outline-warning");
 			$(this).find("i").removeClass("far");
 			$(this).find("i").addClass("fas");
+			favoriteDo($('#station-name').text(),"add");			
 			$('.alert > strong').text("추가 성공!");
 			$('.alert > span').text("즐겨찾기에 등록 하였습니다.");
 			$('.alert').show();
@@ -297,16 +305,68 @@ $(function(){
 			$(this).addClass("btn-outline-secondary");
 			$(this).find("i").removeClass("fas");
 			$(this).find("i").addClass("far");
+			favoriteDo($('#station-name').text(),"remove");
 			$('.alert > strong').text("제거 완료!");
 			$('.alert > span').text("즐겨찾기를 수정 하였습니다.");
 			$('.alert').show();
 		}
 	});
-	
+	var addFvList=new Array();	// 이전에 추가해놓은 즐겨찾기 목록
+   	var sessionRealMid = '<%=(String) session.getAttribute("realMid")%>';
+    if(sessionRealMid != '' || sessionRealMid != 'null'){
+    	// ajax로 즐겨찾기 목록 갖고와서 addFvList에 넣어놓기
+    	$.ajax({
+    		type: "get",
+			async : true,
+			url : "../member/getfavoritelist.do",
+			contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+			success : function(data){
+				$.each(JSON.parse(data), function(){
+					addFvList.push(this.STATION_NAME);
+				});
+				if($.inArray($('#station-name').text(),addFvList)){
+					$('#favorite-btn').removeClass("btn-outline-secondary");
+					$('#favorite-btn').addClass("btn-outline-warning");
+					$('#favorite-btn').find("i").removeClass("far");
+					$('#favorite-btn').find("i").addClass("fas");
+				}
+			}
+    	});
+    }
 	// 즐겨찾기 관리 함수
-	function favoriteDo(key){
-		
+	function favoriteDo(value, key){
+		var sessionRealMid = '<%=(String) session.getAttribute("realMid")%>';
+        if(sessionRealMid == '' || sessionRealMid == 'null'){
+     	   alert('즐겨찾기 추가는 회원만 가능합니다. ');
+     	   return false;
+        }
+ 	  
+ 	   if(key == "add"){ 		   
+ 		   
+ 		   $.ajax({
+ 			   async : true,
+        		   url : "../member/addfavoritelist.do",
+ 			   contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+ 			   data : {sname : value},
+ 			   error : function(){
+ 				   return false;
+ 			   }
+ 		   }); 
+ 	   } else{ 
+ 		  
+ 		   $.ajax({
+ 			   async : true,
+        		   url : "../member/editFavoriteBySname.do",
+ 			   contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+ 			   data : {sname : value},
+ 			   error : function(){
+ 				  return false;
+ 			   }
+ 		   });
+ 	   }
+ 	   
 	}
+	
 	// 알림창 닫기
 	$('.close').click(function(){
 		$('.alert').hide();

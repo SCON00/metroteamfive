@@ -216,7 +216,7 @@ function listStation(data){
 	}
 }
 
-// 열차 시간표 - SearchArrivalInfoByIDService, 열차별 경유 구간 정보 - SearchViaSTNArrivalTimeByTrainService
+//열차 시간표 - SearchArrivalInfoByIDService, 열차별 경유 구간 정보 - SearchViaSTNArrivalTimeByTrainService
 function trainSchedule(lineNumber, stationCode, inOrOut){
 	// 역 기준 도착 스케줄 조회 - 도착시간, 열차코드
 	$.getJSON("http://openapi.seoul.go.kr:8088/" + apiKey[Math.floor(Math.random()*(apiKey.length))]
@@ -248,29 +248,7 @@ function trainSchedule(lineNumber, stationCode, inOrOut){
 						liveStation.find("div:last-child").text("열차 " + arr[0].trainCode);
 					}
 					
-					// 차량기준 열차 스케줄 조회 - 역 별 차량 도착 예정 시간
-					$.getJSON("http://openapi.seoul.go.kr:8088/" + apiKey[Math.floor(Math.random()*(apiKey.length))]
-							+ "/json/SearchViaSTNArrivalTimeByTrainService/1/100/"
-							+ arr[0].trainCode + "/" + weekTag + "/" + inOrOut + "/",
-							function(dataSet){
-								var resultSet = dataSet.SearchViaSTNArrivalTimeByTrainService.row;
-								var arr = new Array();
-								for(var i=0; i<resultSet.length; i++){
-									var timeRemain = strToDate(resultSet[i].ARRIVETIME);
-									if(timeRemain < 0) continue;
-									arr.push({
-										"timeRemain" 		: timeRemain,
-										"fCode" 			: resultSet[i].FR_CODE,
-										"stationCode" 		: resultSet[i].STATION_CD,
-										"stationName" 		: resultSet[i].STATION_NM,
-										"destinationName" 	: resultSet[i].SUBWAYENAME,
-										"arriveTime" 		: resultSet[i].ARRIVETIME
-									});
-								}
-								console.log(arr.sort(function(a,b){
-									return a["timeRemain"] - b["timeRemain"];
-								}));
-					});					
+								
 	});
 }
 
